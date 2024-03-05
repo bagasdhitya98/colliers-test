@@ -1,10 +1,13 @@
 import React from "react";
+import axios from "axios";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Login from "./src/pages/login";
 import ListEmployee from "./src/pages/list_employee";
+
+axios.defaults.baseURL = "https://employee-api-kappa.vercel.app";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
