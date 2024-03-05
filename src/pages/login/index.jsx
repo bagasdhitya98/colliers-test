@@ -9,7 +9,7 @@ import Layout from "../../components/Layout";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [auth, setAuth] = useState({ username: "", password: "" });
   const [snackbar, setSnackbar] = useState({
     visible: false,
@@ -26,6 +26,9 @@ const Login = () => {
         message: "Login successful",
         success: true,
       });
+      setTimeout(() => {
+        navigation.navigate("ListEmployee");
+      }, 1000);
     } else {
       setSnackbar({ visible: true, message: "Login failed", success: false });
     }

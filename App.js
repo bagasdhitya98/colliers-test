@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { getData } from "./src/utils/services/storage";
+
 import Login from "./src/pages/login";
 import ListEmployee from "./src/pages/list_employee";
+import CreateEmployee from "./src/pages/create_employee";
+import DetailEmployee from "./src/pages/detail_employee";
 
 axios.defaults.baseURL = "https://employee-api-kappa.vercel.app";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await getData("token");
+        if (!token) {
+          navigation.navigate("Login");
+        }
+      } catch (error) {
+        console.error("Error checking token:", error);
+      }
+    };
+    checkToken();
+  }, []);
 
   return (
     <NavigationContainer>
@@ -18,14 +35,18 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ headerShown: false }} // Menghilangkan header
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="ListEmployee" component={ListEmployee} />
+        <Stack.Screen
+          name="ListEmployee"
+          component={ListEmployee}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="CreateEmployee" component={CreateEmployee} />
+        <Stack.Screen name="DetailEmployee" component={DetailEmployee} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});
