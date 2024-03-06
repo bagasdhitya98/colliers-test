@@ -39,7 +39,7 @@ const DetailEmployee = ({ route }) => {
           <Text style={styles.label}>Phone Number 2:</Text>
           <Text style={styles.text}>{item.phone2}</Text>
         </View>
-        <View style={[styles.infoContainer, { marginTop: "8%" }]}>
+        <View style={[styles.infoContainer, { marginTop: 16 }]}>
           <Text style={styles.label}>Email:</Text>
           <Text style={styles.text}>{item.email}</Text>
         </View>
@@ -50,7 +50,7 @@ const DetailEmployee = ({ route }) => {
 
 const styles = StyleSheet.create({
   avatarContainer: {
-    marginVertical: "10%",
+    marginVertical: 20,
     alignItems: "center",
   },
   avatar: {
