@@ -1,4 +1,5 @@
 import axios from "axios";
+import { saveData } from "../services/storage";
 
 const submitLogin = async (auth) => {
   try {
@@ -7,6 +8,7 @@ const submitLogin = async (auth) => {
       password: auth?.password,
     });
     if (response.data !== "Username or Password not known") {
+      await saveData("token", { token: response.data }, 86400);
       return {
         success: true,
         message: "Login successful",

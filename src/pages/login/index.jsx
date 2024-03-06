@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { Snackbar } from "react-native-paper";
 
 import submitLogin from "../../utils/api/login";
-import { saveData } from "../../utils/services/storage";
 
 import Layout from "../../components/Layout";
 import Input from "../../components/Input";
@@ -20,7 +19,6 @@ const Login = ({ navigation }) => {
   const handleLogin = async () => {
     const result = await submitLogin(auth);
     if (result.success === true) {
-      await saveData("token", { token: result?.token }, 86400);
       setSnackbar({
         visible: true,
         message: "Login successful",
