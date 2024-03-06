@@ -3,8 +3,9 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  View,
   ActivityIndicator,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 import listEmployee from "../../utils/api/list_employee";
@@ -12,7 +13,7 @@ import listEmployee from "../../utils/api/list_employee";
 import Input from "../../components/Input";
 import Layout from "../../components/Layout";
 
-const ListEmployee = () => {
+const ListEmployee = ({ navigation }) => {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
@@ -66,18 +67,28 @@ const ListEmployee = () => {
 
   useEffect(() => {
     fetchData();
+    console.log("data : ", data);
   }, []);
 
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Text style={styles.text}>
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() =>
+        navigation.navigate("DetailEmployee", {
+          item: item,
+        })
+      }
+    >
+      <Text style={[styles.text, { fontWeight: "700" }]}>
         {item.first_name} {item.last_name}
       </Text>
-      <Text style={styles.text}>Company Name : {item.company_name}</Text>
-      <Text style={styles.text}>
-        Location : {item.city}, {item.state} {item.zip}
-      </Text>
-    </View>
+      <View style={{ gap: -8, display: "flex", flexDirection: "column" }}>
+        <Text style={styles.text}>Company Name : {item.company_name}</Text>
+        <Text style={styles.text}>
+          Location : {item.city}, {item.state} {item.zip}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -115,10 +126,11 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
   },
   item: {
-    padding: 10,
+    padding: 15,
     backgroundColor: "#245AE2",
     borderRadius: 5,
     marginVertical: 5,
+    width: "auto",
   },
   loadingIndicator: {
     marginVertical: 8,

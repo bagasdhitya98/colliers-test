@@ -48,7 +48,15 @@ const App = () => {
           }}
         />
         <Stack.Screen name="CreateEmployee" component={CreateEmployee} />
-        <Stack.Screen name="DetailEmployee" component={DetailEmployee} />
+        <Stack.Screen
+          name="DetailEmployee"
+          component={DetailEmployee}
+          options={{
+            headerTransparent: true,
+            headerTintColor: "white",
+            title: "Detail Employee",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
