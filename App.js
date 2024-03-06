@@ -40,7 +40,12 @@ const App = () => {
         <Stack.Screen
           name="ListEmployee"
           component={ListEmployee}
-          options={{ headerShown: false }}
+          options={{
+            headerTransparent: true,
+            headerTintColor: "white",
+            headerBackVisible: false,
+            title: "List Employee",
+          }}
         />
         <Stack.Screen name="CreateEmployee" component={CreateEmployee} />
         <Stack.Screen name="DetailEmployee" component={DetailEmployee} />
