@@ -40,60 +40,52 @@ const Login = ({ navigation }) => {
 
   return (
     <Layout>
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Manage Your Team{"\n"}
-          Effortlessly
-        </Text>
-        <View style={styles.layout_input}>
-          <Input
-            label={"Username"}
-            value={auth.username}
-            onChangeText={(value) => setAuth({ ...auth, username: value })}
-          />
-          <Input
-            label={"Password"}
-            value={auth.password}
-            onChangeText={(value) => setAuth({ ...auth, password: value })}
-            secureTextEntry={true}
-          />
-        </View>
-        <View style={styles.layout_button}>
-          <Button title="Login" onPress={handleLogin} />
-        </View>
-        <Snackbar
-          visible={snackbar.visible}
-          onDismiss={onDismissSnackBar}
-          duration={Snackbar.DURATION_SHORT}
-          style={{
-            backgroundColor: "white",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            fontWeight: 300,
-          }}
-          action={{
-            label: snackbar.success ? "✓" : "!",
-            labelStyle: { color: snackbar.success ? "green" : "red" },
-            onPress: onDismissSnackBar,
-          }}
-        >
-          <Text style={{ color: snackbar.success ? "green" : "red" }}>
-            {snackbar.message}
-          </Text>
-        </Snackbar>
+      <Text style={styles.title}>
+        Manage Your Team{"\n"}
+        Effortlessly
+      </Text>
+      <View style={styles.layout_input}>
+        <Input
+          label={"Username"}
+          value={auth.username}
+          onChangeText={(value) => setAuth({ ...auth, username: value })}
+        />
+        <Input
+          label={"Password"}
+          value={auth.password}
+          onChangeText={(value) => setAuth({ ...auth, password: value })}
+          secureTextEntry={true}
+        />
       </View>
+      <View style={styles.layout_button}>
+        <Button title="Login" onPress={handleLogin} />
+      </View>
+      <Snackbar
+        visible={snackbar.visible}
+        onDismiss={onDismissSnackBar}
+        duration={Snackbar.DURATION_SHORT}
+        style={{
+          backgroundColor: "white",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          fontWeight: 300,
+        }}
+        action={{
+          label: snackbar.success ? "✓" : "!",
+          labelStyle: { color: snackbar.success ? "green" : "red" },
+          onPress: onDismissSnackBar,
+        }}
+      >
+        <Text style={{ color: snackbar.success ? "green" : "red" }}>
+          {snackbar.message}
+        </Text>
+      </Snackbar>
     </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
