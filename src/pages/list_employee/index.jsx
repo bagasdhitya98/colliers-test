@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 15,
-    backgroundColor: "#245AE2",
+    backgroundColor: "#24428E",
     borderRadius: 5,
     marginVertical: 5,
     width: "auto",

@@ -25,7 +25,7 @@ const Login = ({ navigation }) => {
         success: true,
       });
       setTimeout(() => {
-        navigation.navigate("ListEmployee");
+        navigation.navigate("Home");
       }, 1000);
     } else {
       setSnackbar({ visible: true, message: "Login failed", success: false });

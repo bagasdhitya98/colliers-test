@@ -9,6 +9,7 @@ import Login from "./src/pages/login";
 import ListEmployee from "./src/pages/list_employee";
 import CreateEmployee from "./src/pages/create_employee";
 import DetailEmployee from "./src/pages/detail_employee";
+import Home from "./src/pages/home";
 
 axios.defaults.baseURL = "https://employee-api-kappa.vercel.app";
 
@@ -38,12 +39,21 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerTransparent: true,
+            headerTintColor: "white",
+            headerBackVisible: false,
+            title: "",
+          }}
+        />
+        <Stack.Screen
           name="ListEmployee"
           component={ListEmployee}
           options={{
             headerTransparent: true,
             headerTintColor: "white",
-            headerBackVisible: false,
             title: "List Employee",
           }}
         />
