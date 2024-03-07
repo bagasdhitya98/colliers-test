@@ -57,7 +57,15 @@ const App = () => {
             title: "List Employee",
           }}
         />
-        <Stack.Screen name="CreateEmployee" component={CreateEmployee} />
+        <Stack.Screen
+          name="CreateEmployee"
+          component={CreateEmployee}
+          options={{
+            headerTransparent: true,
+            headerTintColor: "white",
+            title: "Create Employee",
+          }}
+        />
         <Stack.Screen
           name="DetailEmployee"
           component={DetailEmployee}
